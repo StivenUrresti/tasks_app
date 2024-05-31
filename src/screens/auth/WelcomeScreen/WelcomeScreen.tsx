@@ -8,15 +8,16 @@ import React from 'react';
 import {Text} from '@react-native-material/core';
 import {theme} from '@/theme/theme';
 import {View} from 'react-native-ui-lib';
+import {RootStackRoutes, RootStackScreenProps} from '@/types/stackRoutes';
+import {images} from '@/assets/img';
 
-export const WelcomeScreen = () => {
+export const WelcomeScreen = (
+  props: RootStackScreenProps<RootStackRoutes.WELCOME>,
+) => {
+  const {navigation} = props;
   return (
     <SafeAreaView style={styles.container}>
-      <ImageBackground
-        style={styles.imgBackground}
-        source={{
-          uri: 'https://www.stelorder.com/wp-content/uploads/2023/04/portada-mejores-gestores-tareas.jpg',
-        }}>
+      <ImageBackground style={styles.imgBackground} source={images.WELCOME_IMG}>
         <View style={styles.overlay} />
         <View style={styles.content}>
           <Text style={styles.title}>¡Bienvenido a TaskMaster! 🎉</Text>
@@ -24,7 +25,9 @@ export const WelcomeScreen = () => {
             Gestiona tus tareas de manera fácil y eficiente. ¡Estamos aquí para
             ayudarte a ser más productivo! 💪
           </Text>
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => navigation.navigate(RootStackRoutes.LOGIN)}>
             <Text style={styles.textButton}>Continuar</Text>
           </TouchableOpacity>
         </View>
@@ -75,5 +78,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     textAlign: 'center',
     marginTop: 20,
+    fontWeight: '600',
   },
 });
