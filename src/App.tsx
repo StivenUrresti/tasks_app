@@ -1,10 +1,21 @@
 import React from 'react';
-import {Text, SafeAreaView} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {StyleSheet} from 'react-native';
+import {StackNavigation} from './navigation/stackNavigation';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
-export const App = () => {
+export function App() {
   return (
-    <SafeAreaView>
-      <Text>App</Text>
-    </SafeAreaView>
+    <GestureHandlerRootView style={styles.container}>
+      <NavigationContainer>
+        <StackNavigation />
+      </NavigationContainer>
+    </GestureHandlerRootView>
   );
-};
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
