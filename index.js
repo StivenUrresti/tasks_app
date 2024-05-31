@@ -8,11 +8,15 @@ import {name as appName} from './app.json';
 import {App} from '@/App';
 import 'react-native-gesture-handler';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {Provider} from 'react-redux';
+import store from '@/libraries';
 
 const Application = () => (
-  <SafeAreaProvider style={styles.styles}>
-    <App />
-  </SafeAreaProvider>
+  <Provider store={store}>
+    <SafeAreaProvider style={styles.styles}>
+      <App />
+    </SafeAreaProvider>
+  </Provider>
 );
 
 if (__DEV__) {

@@ -17,7 +17,7 @@ export const WelcomeScreen = (
   const {navigation} = props;
   return (
     <SafeAreaView style={styles.container}>
-      <ImageBackground style={styles.imgBackground} source={images.WELCOME_IMG}>
+      <ImageBackground style={styles.imgBackground} source={images.IMG_WELCOME}>
         <View style={styles.overlay} />
         <View style={styles.content}>
           <Text style={styles.title}>¡Bienvenido a TaskMaster! 🎉</Text>
