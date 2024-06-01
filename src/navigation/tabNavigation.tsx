@@ -1,8 +1,10 @@
+/* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {ProfileScreen} from '@/screens';
+import {HomeScreen, ProfileScreen} from '@/screens';
 import {TabsHomeParamList, TabsHomeRoutes} from '@/types/tabsRoutes';
 import {theme} from '@/theme/theme';
+import {CustomTabBar} from './CustomTabBar';
 
 const Tab = createBottomTabNavigator<TabsHomeParamList>();
 
@@ -15,7 +17,9 @@ export function TabsNavigation() {
         tabBarHideOnKeyboard: true,
         tabBarShowLabel: false,
       }}
-      initialRouteName={TabsHomeRoutes.PROFILE}>
+      tabBar={props => <CustomTabBar {...props} />}
+      initialRouteName={TabsHomeRoutes.HOME}>
+      <Tab.Screen name={TabsHomeRoutes.HOME} component={HomeScreen} />
       <Tab.Screen name={TabsHomeRoutes.PROFILE} component={ProfileScreen} />
     </Tab.Navigator>
   );

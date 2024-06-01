@@ -1,4 +1,4 @@
-export interface ResponseSignInEntity {
+export interface userEntity {
   id: number;
   username: string;
   email: string;

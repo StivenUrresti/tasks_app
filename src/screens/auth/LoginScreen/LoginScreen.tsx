@@ -22,6 +22,7 @@ export const LoginScreen = (
     errors,
     isValid,
     toggleShowPassword,
+    handleSingIn,
   } = useActions();
   return (
     <SafeAreaView style={styles.container}>
@@ -32,14 +33,14 @@ export const LoginScreen = (
         <Text style={styles.title}>Login</Text>
         <Text style={styles.subtitle}>Please sign in to your account </Text>
       </View>
-      <Text style={styles.subtitle}>Username</Text>
+      <Text style={styles.subtitle}>Email</Text>
       <CustomInput
         leadingIcon={<UserIcon />}
-        placeholder="username"
-        name="username"
-        hasError={!!errors?.username}
+        placeholder="email"
+        name="email"
+        hasError={!!errors?.email}
         control={control}
-        validationMessage={errors?.username?.message}
+        validationMessage={errors?.email?.message}
       />
       <Text style={styles.subtitle}>Password</Text>
       <CustomInput
@@ -58,7 +59,7 @@ export const LoginScreen = (
           backgroundColor={theme.PRIMARY_COLOR}
           label="Continue"
           textColor="white"
-          onPress={() => {}}
+          onPress={() => handleSingIn()}
           disabled={_.isEmpty(dirtyFields) || !isValid}
         />
         <View marginT-20>

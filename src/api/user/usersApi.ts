@@ -1,5 +1,5 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
-import type {signInEntity, ResponseSignInEntity} from './entities/usersEntity';
+import type {signInEntity, userEntity} from './entities/usersEntity';
 
 export const usersApi = createApi({
   reducerPath: 'usersApi',
@@ -16,9 +16,9 @@ export const usersApi = createApi({
     },
   }),
   endpoints: builder => ({
-    verifyUser: builder.query<ResponseSignInEntity, signInEntity>({
-      query: ({password, email}: signInEntity) => `users/${password}/${email}`,
+    verifyUser: builder.query<userEntity, signInEntity>({
+      query: ({password, email}: signInEntity) => `users/${email}/${password}`,
     }),
   }),
 });
-export const {useVerifyUserQuery} = usersApi;
+export const {useVerifyUserQuery, useLazyVerifyUserQuery} = usersApi;

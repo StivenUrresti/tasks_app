@@ -3,18 +3,24 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {RootStackParamList, RootStackRoutes} from '@/types/stackRoutes';
 import {LoginScreen, WelcomeScreen} from '@/screens';
 import {TabsNavigation} from './tabNavigation';
+import {useAuthProvider} from '@/context/AuthContext';
+import {View} from 'react-native-ui-lib';
+import {Text} from '@react-native-material/core';
+import {theme} from '@/theme/theme';
 
 const Stack = createStackNavigator<RootStackParamList>();
 
 export function StackNavigation() {
-  const isAuthenticated = false;
-  // if (isLoading) {
-  //   return (
-  //     <View>
-  //       <Text>loading..</Text>
-  //     </View>
-  //   );
-  // }
+  const {isLoading, isAuthenticated} = useAuthProvider();
+  if (isLoading) {
+    return (
+      <View flex-1 center>
+        <Text variant="h4" color={theme.PRIMARY_DARK_COLOR}>
+          Task master.
+        </Text>
+      </View>
+    );
+  }
   return (
     <Stack.Navigator
       screenOptions={{
