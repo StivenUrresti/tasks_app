@@ -1,41 +1,32 @@
 import React from 'react';
-import {Platform, SafeAreaView, StyleSheet} from 'react-native';
+import {Text, SafeAreaView, StyleSheet, Platform} from 'react-native';
+import {RootStackRoutes, RootStackScreenProps} from '@/types/stackRoutes';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {BackArrowIcon} from '@/assets/svg';
-import {RootStackRoutes, RootStackScreenProps} from '@/types/stackRoutes';
+import {View} from 'react-native-ui-lib';
 import {useActions} from './useActions';
-import {CustomInput} from '@/components';
-import {Button, Text, View} from 'react-native-ui-lib';
-import {Controller} from 'react-hook-form';
-import {Picker} from '@react-native-picker/picker';
+import {Button, CustomInput} from '@/components';
 import {theme} from '@/theme/theme';
 import _ from 'lodash';
 
-export const AddTaskScreen = (
-  props: RootStackScreenProps<RootStackRoutes.ADD_TASK>,
+export const TaskDetailScreen = (
+  props: RootStackScreenProps<RootStackRoutes.TASK_DETAIL>,
 ) => {
-  const {
-    dataCategories,
-    control,
-    errors,
-    dirtyFields,
-    isValid,
-    handleCreateTask,
-  } = useActions();
-  const {navigation} = props;
+  const {route, navigation} = props;
+  const {taskId} = route.params;
+  const {control, errors, isValid, dirtyFields, handleUpdateTask} =
+    useActions(taskId);
 
   return (
     <SafeAreaView style={styles.container}>
-      <View flex paddingH-16>
+      <View flex-1 paddingH-16>
         <TouchableOpacity
           style={styles.header}
           onPress={() => navigation.pop()}>
           <BackArrowIcon />
         </TouchableOpacity>
-        <Text style={styles.title}>Añadir Tarea</Text>
-
         <View marginV-20>
-          <Text style={styles.label}>titulo</Text>
+          <Text style={styles.label}>Title</Text>
           <CustomInput
             placeholder="Enter task title"
             name="title"
@@ -46,7 +37,7 @@ export const AddTaskScreen = (
         </View>
 
         <View marginV-20>
-          <Text style={styles.label}>Descripción</Text>
+          <Text style={styles.label}>Description</Text>
           <CustomInput
             placeholder="Enter task description"
             name="description"
@@ -55,29 +46,10 @@ export const AddTaskScreen = (
             validationMessage={errors?.description?.message}
           />
         </View>
-
-        <View height={30}>
-          <Text style={styles.label}>selecciona a categoría</Text>
-          {dataCategories ? (
-            <Controller
-              control={control}
-              name="categoryId"
-              render={({field: {onChange, value}}) => (
-                <Picker selectedValue={value} onValueChange={onChange}>
-                  {dataCategories.map(e => (
-                    <Picker.Item key={e.id} label={e.name} value={e.id} />
-                  ))}
-                </Picker>
-              )}
-            />
-          ) : (
-            <Text style={styles.errorText}>No categories</Text>
-          )}
-        </View>
         <Button
           backgroundColor={theme.YELLOW}
-          label="crear tarea"
-          onPress={() => handleCreateTask(navigation)}
+          label="actualizar tarea"
+          onPress={() => handleUpdateTask(navigation)}
           style={styles.button}
           disabled={_.isEmpty(dirtyFields) || !isValid}
         />
@@ -100,11 +72,16 @@ const styles = StyleSheet.create({
     marginBottom: 8,
     color: '#333',
   },
-  title: {
-    fontSize: 18,
+  switchContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginVertical: 10,
+  },
+  switchLabel: {
+    fontSize: 16,
     fontWeight: '600',
-    color: '#000',
-    marginVertical: 20,
+    color: '#333',
   },
   errorText: {
     fontSize: 16,

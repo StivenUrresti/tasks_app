@@ -19,6 +19,18 @@ export const categoryApi = createApi({
     getCategory: builder.query<ICategoryEntityList, number>({
       query: userId => `categories/${userId}`,
     }),
+    createCategory: builder.mutation<
+      ICategoryEntityList,
+      {userId: number; name: string}
+    >({
+      query: body => ({
+        url: `categories/${body.userId}`,
+        method: 'POST',
+        body: {
+          name: body.name,
+        },
+      }),
+    }),
   }),
 });
-export const {useGetCategoryQuery} = categoryApi;
+export const {useGetCategoryQuery, useCreateCategoryMutation} = categoryApi;

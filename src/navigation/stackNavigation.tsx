@@ -13,6 +13,7 @@ import {useAuthProvider} from '@/context/AuthContext';
 import {View} from 'react-native-ui-lib';
 import {Text} from '@react-native-material/core';
 import {theme} from '@/theme/theme';
+import {TaskDetailScreen} from '@/screens/home';
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -47,6 +48,11 @@ export function StackNavigation() {
           <Stack.Screen
             name={RootStackRoutes.ADD_CATEGORY}
             component={AddCategoryScreen}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name={RootStackRoutes.TASK_DETAIL}
+            component={TaskDetailScreen}
             options={{headerShown: false}}
           />
         </>

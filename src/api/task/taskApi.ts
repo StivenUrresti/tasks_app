@@ -1,5 +1,5 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
-import {ITaskEntityArray} from './entities/taskEntity';
+import {ITaskEntityArray, taskEntity} from './entities/taskEntity';
 
 export const taskApi = createApi({
   reducerPath: 'taskApi',
@@ -33,7 +33,48 @@ export const taskApi = createApi({
         },
       }),
     }),
+    getTaskById: builder.query<taskEntity, {userId: number; taskId: number}>({
+      query: ({userId, taskId}) => `tasks/${userId}/${taskId}`,
+    }),
+    updateTask: builder.mutation<
+      taskEntity,
+      {
+        userId: number;
+        taskId: number;
+        title: string;
+        description: string;
+        status: string;
+      }
+    >({
+      query: body => ({
+        url: `tasks/${body.userId}/${body.taskId}`,
+        method: 'PUT',
+        body: {
+          title: body.title,
+          description: body.description,
+          status: body.status,
+        },
+      }),
+    }),
+    updateTaskStatus: builder.mutation<
+      taskEntity,
+      {userId: number; taskId: number; status: string}
+    >({
+      query: body => ({
+        url: `tasks/${body.taskId}/${body.userId}/status`,
+        method: 'PUT',
+        body: {
+          status: body.status,
+        },
+      }),
+    }),
   }),
 });
-export const {useGetTasksQuery, useCreateTaskMutation, useLazyGetTasksQuery} =
-  taskApi;
+export const {
+  useGetTasksQuery,
+  useCreateTaskMutation,
+  useLazyGetTasksQuery,
+  useGetTaskByIdQuery,
+  useUpdateTaskMutation,
+  useUpdateTaskStatusMutation,
+} = taskApi;

@@ -9,6 +9,7 @@ export enum RootStackRoutes {
   REGISTER = 'REGISTER',
   ADD_CATEGORY = 'ADD_CATEGORY',
   ADD_TASK = 'ADD_TASK',
+  TASK_DETAIL = 'TASK_DETAIL',
 }
 
 export type RootStackParamList = {
@@ -18,6 +19,7 @@ export type RootStackParamList = {
   [RootStackRoutes.REGISTER]: undefined;
   [RootStackRoutes.ADD_CATEGORY]: undefined;
   [RootStackRoutes.ADD_TASK]: undefined;
+  [RootStackRoutes.TASK_DETAIL]: {taskId: number};
 };
 
 export type RootStackScreenProps<T extends keyof RootStackParamList> =
