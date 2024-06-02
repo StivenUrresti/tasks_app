@@ -17,7 +17,7 @@ import {RootStackRoutes} from '@/types/stackRoutes';
 
 export const HomeScreen = (props: TabsHomeScreenProps<TabsHomeRoutes.HOME>) => {
   const {navigation} = props;
-  const {dataTasks, loadingTasks, onRefresh} = useActions();
+  const {dataTask, loadingTasks, onRefresh} = useActions();
   const [resetAccordion, setResetAccordion] = useState(false);
 
   useEffect(() => {
@@ -58,7 +58,7 @@ export const HomeScreen = (props: TabsHomeScreenProps<TabsHomeRoutes.HOME>) => {
 
         <View style={styles.listContainer}>
           <FlatList
-            data={dataTasks || []}
+            data={dataTask || []}
             keyExtractor={(item: taskEntity) => item.id.toString()}
             renderItem={renderItem}
             refreshing={loadingTasks}
