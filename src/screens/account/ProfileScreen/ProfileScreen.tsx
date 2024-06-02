@@ -39,7 +39,6 @@ export const ProfileScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: theme.BACKGROUND_SCREEN_COLOR,
   },
   textName: {
     fontSize: 28,

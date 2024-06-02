@@ -24,3 +24,4 @@ export {UserFilledIcon} from './UserFilledIcon';
 // SchduleIcons
 export {ScheduleFillIcon} from './ScheduleFillIcon';
 export {ScheduleOutlinedIcon} from './ScheduleOutlinedIcon';
+export {PlusIcon} from './PlusIcon';

@@ -1,7 +1,13 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {RootStackParamList, RootStackRoutes} from '@/types/stackRoutes';
-import {LoginScreen, RegisterScreen, WelcomeScreen} from '@/screens';
+import {
+  AddCategoryScreen,
+  AddTaskScreen,
+  LoginScreen,
+  RegisterScreen,
+  WelcomeScreen,
+} from '@/screens';
 import {TabsNavigation} from './tabNavigation';
 import {useAuthProvider} from '@/context/AuthContext';
 import {View} from 'react-native-ui-lib';
@@ -31,6 +37,16 @@ export function StackNavigation() {
           <Stack.Screen
             name={RootStackRoutes.TABS_HOME}
             component={TabsNavigation}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name={RootStackRoutes.ADD_TASK}
+            component={AddTaskScreen}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name={RootStackRoutes.ADD_CATEGORY}
+            component={AddCategoryScreen}
             options={{headerShown: false}}
           />
         </>
