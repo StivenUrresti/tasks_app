@@ -63,7 +63,8 @@ export const LoginScreen = (
           disabled={_.isEmpty(dirtyFields) || !isValid}
         />
         <View marginT-20>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.navigate(RootStackRoutes.REGISTER)}>
             <Text style={styles.spamText}>
               Don't have an account?
               <Text style={{color: theme.LINKS_COLOR}}>Sign up</Text>

@@ -1,7 +1,7 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {RootStackParamList, RootStackRoutes} from '@/types/stackRoutes';
-import {LoginScreen, WelcomeScreen} from '@/screens';
+import {LoginScreen, RegisterScreen, WelcomeScreen} from '@/screens';
 import {TabsNavigation} from './tabNavigation';
 import {useAuthProvider} from '@/context/AuthContext';
 import {View} from 'react-native-ui-lib';
@@ -41,6 +41,10 @@ export function StackNavigation() {
             component={WelcomeScreen}
           />
           <Stack.Screen name={RootStackRoutes.LOGIN} component={LoginScreen} />
+          <Stack.Screen
+            name={RootStackRoutes.REGISTER}
+            component={RegisterScreen}
+          />
         </>
       )}
     </Stack.Navigator>

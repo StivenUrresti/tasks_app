@@ -9,3 +9,9 @@ export interface signInEntity {
   email: string;
   password: string;
 }
+
+export interface userEntityToCreate {
+  username: string;
+  email: string;
+  password: string;
+}
