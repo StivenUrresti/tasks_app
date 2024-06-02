@@ -19,6 +19,21 @@ export const taskApi = createApi({
     getTasks: builder.query<ITaskEntityArray, number>({
       query: id => `tasks/${id}`,
     }),
+    createTask: builder.mutation<
+      ITaskEntityArray,
+      {title: string; description: string; categoryId: number; userId: number}
+    >({
+      query: body => ({
+        url: `tasks/${body.userId}/${body.categoryId}`,
+        method: 'POST',
+        body: {
+          title: body.title,
+          description: body.description,
+          status: 'not_done',
+        },
+      }),
+    }),
   }),
 });
-export const {useGetTasksQuery} = taskApi;
+export const {useGetTasksQuery, useCreateTaskMutation, useLazyGetTasksQuery} =
+  taskApi;

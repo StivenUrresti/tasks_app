@@ -1170,6 +1170,8 @@ PODS:
     - React
   - RNCAsyncStorage (1.23.1):
     - React-Core
+  - RNCPicker (2.7.6):
+    - React-Core
   - RNGestureHandler (2.16.2):
     - DoubleConversion
     - glog
@@ -1298,6 +1300,7 @@ DEPENDENCIES:
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - ReactNativeUiLib (from `../node_modules/react-native-ui-lib`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
+  - "RNCPicker (from `../node_modules/@react-native-picker/picker`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
@@ -1422,6 +1425,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-ui-lib"
   RNCAsyncStorage:
     :path: "../node_modules/@react-native-async-storage/async-storage"
+  RNCPicker:
+    :path: "../node_modules/@react-native-picker/picker"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
   RNReanimated:
@@ -1490,6 +1495,7 @@ SPEC CHECKSUMS:
   ReactCommon: f42444e384d82ab89184aed5d6f3142748b54768
   ReactNativeUiLib: e23a2b3d196aaaf561694cf76385c1ff3055bdc2
   RNCAsyncStorage: 826b603ae9c0f88b5ac4e956801f755109fa4d5c
+  RNCPicker: f58e790450cb0a74c09dd1c677bd1de41a5741b9
   RNGestureHandler: 2282cfbcf86c360d29f44ace393203afd5c6cff7
   RNReanimated: 7ad0f08a845cb60955ee5d461d2156d7b9707118
   RNScreens: b32a9ff15bea7fcdbe5dff6477bc503f792b1208
